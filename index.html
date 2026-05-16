@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MathApp Space IUA – Connexion</title>
+<link rel="icon" href="data:," />
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<!-- ✅ auth.css seulement — PAS main.css (main.css = pages internes uniquement) -->
+<link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+<div class="page-wrapper">
+
+    <div class="bg-deco" aria-hidden="true"></div>
+
+    <!-- ✅ login-card contient card-left ET card-right -->
+    <div class="login-card">
+
+    <!-- ── CÔTÉ GAUCHE ── -->
+    <div class="card-left">
+
+        <div class="ae-logo-wrap">
+        <img
+            src="assets/Images/AEMATHS.jpeg"
+            alt="Logo AE Math – IUA"
+            class="ae-logo"
+            onerror="this.style.display='none'; document.querySelector('.ae-logo-placeholder').style.display='flex';"
+        />
+        <div class="ae-logo-placeholder" aria-hidden="true">
+            <span>AE</span><br/><span style="font-size:11px;font-weight:600;">MATH</span>
+        </div>
+        </div>
+
+        <div class="left-badge">🏛 Institut Universitaire d'Abidjan</div>
+
+        <h1 class="left-title">
+        Espace Étudiant<br />
+        L1 Maths<br />
+        Appliquées
+        </h1>
+
+        <p class="left-desc">
+        Cours, sujets d'examens et ressources pour ta réussite.
+        Créé par tes aînés de Licence 2.
+        </p>
+
+        <div class="left-math-deco" aria-hidden="true">∑ ∫ ∂ π</div>
+
+    </div><!-- /card-left -->
+
+    <!-- ── CÔTÉ DROIT ── -->
+    <div class="card-right">
+
+        <div class="right-header">
+        <div class="right-logo">📐</div>
+        <div>
+            <div class="right-title">MathApp Space IUA</div>
+            <div class="right-sub">Maths Appliquées · L1</div>
+        </div>
+        </div>
+
+        <div class="tabs" role="tablist">
+        <button class="tab active" id="tab-login" role="tab"
+            aria-selected="true" aria-controls="form-login"
+            onclick="switchTab('login')">
+            Se connecter
+        </button>
+        <button class="tab" id="tab-register" role="tab"
+            aria-selected="false" aria-controls="form-register"
+            onclick="switchTab('register')">
+            Créer un compte
+        </button>
+        </div>
+
+        <!-- FORMULAIRE : SE CONNECTER -->
+        <form id="form-login" class="auth-form" role="tabpanel"
+        aria-labelledby="tab-login" onsubmit="handleLogin(event)" novalidate>
+
+        <div class="field">
+            <label for="login-matricule">Matricule IUA</label>
+            <div class="input-wrap">
+            <span class="input-icon">🆔</span>
+            <input type="text" id="login-matricule" name="matricule"
+                placeholder="Ex : 26MA0312F" autocomplete="username" required />
+            </div>
+            <span class="field-error" id="err-login-matricule"></span>
+        </div>
+
+        <div class="field">
+            <label for="login-password">Mot de passe</label>
+            <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="login-password" name="password"
+                placeholder="••••••••" autocomplete="current-password" required />
+            <button type="button" class="toggle-pw"
+                onclick="togglePassword('login-password', this)"
+                aria-label="Afficher / masquer le mot de passe">👁</button>
+            </div>
+            <span class="field-error" id="err-login-password"></span>
+        </div>
+
+        <div class="form-alert error" id="alert-login" role="alert" aria-live="polite"></div>
+
+        <button type="submit" class="btn-primary" id="btn-login">
+            Se connecter →
+        </button>
+
+        <p class="form-hint">
+            Pas encore inscrit ?
+            <a onclick="switchTab('register')">Créer un compte</a>
+        </p>
+        </form>
+
+        <!-- FORMULAIRE : CRÉER UN COMPTE -->
+        <form id="form-register" class="auth-form hidden" role="tabpanel"
+        aria-labelledby="tab-register" onsubmit="handleRegister(event)" novalidate>
+
+        <div class="field">
+            <label for="reg-nom">Nom & Prénoms complets</label>
+            <div class="input-wrap">
+            <span class="input-icon">👤</span>
+            <input type="text" id="reg-nom" name="nom"
+                placeholder="Ex : Koné Aminata Marie" autocomplete="name" required />
+            </div>
+            <span class="field-error" id="err-reg-nom"></span>
+        </div>
+
+        <div class="field">
+            <label for="reg-matricule">Matricule IUA</label>
+            <div class="input-wrap">
+            <span class="input-icon">🆔</span>
+            <input type="text" id="reg-matricule" name="matricule"
+                placeholder="Ex : 26MA0312F" autocomplete="username" required />
+            </div>
+            <span class="field-error" id="err-reg-matricule"></span>
+            <span class="role-detected" id="role-detected" aria-live="polite"></span>
+        </div>
+
+        <div class="field">
+            <label for="reg-password">Mot de passe</label>
+            <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="reg-password" name="password"
+                placeholder="Choisir un mot de passe (6 caractères min.)"
+                autocomplete="new-password" required />
+            <button type="button" class="toggle-pw"
+                onclick="togglePassword('reg-password', this)"
+                aria-label="Afficher / masquer le mot de passe">👁</button>
+            </div>
+            <span class="field-error" id="err-reg-password"></span>
+        </div>
+
+        <div class="field">
+            <label for="reg-confirm">Confirmer le mot de passe</label>
+            <div class="input-wrap">
+            <span class="input-icon">✅</span>
+            <input type="password" id="reg-confirm" name="confirm"
+                placeholder="Répéter le mot de passe"
+                autocomplete="new-password" required />
+            <button type="button" class="toggle-pw"
+                onclick="togglePassword('reg-confirm', this)"
+                aria-label="Afficher / masquer">👁</button>
+            </div>
+            <span class="field-error" id="err-reg-confirm"></span>
+        </div>
+
+        <div class="form-alert error"   id="alert-register-error" role="alert" aria-live="polite"></div>
+        <div class="form-alert success" id="alert-register-ok"    role="status" aria-live="polite"></div>
+
+        <button type="submit" class="btn-primary" id="btn-register">
+            Créer mon compte →
+        </button>
+
+        <p class="form-hint">
+            Déjà inscrit ?
+            <a onclick="switchTab('login')">Se connecter</a>
+        </p>
+        </form>
+
+    </div><!-- /card-right -->
+
+    </div><!-- /login-card -->
+
+    <footer class="auth-footer">
+    <span>© 2026 <strong>MathApp Space IUA</strong> · L1 Maths Appliquées</span>
+    <span>Fait avec ❤️ par la Promo L2 · IUA Abidjan</span>
+    </footer>
+
+</div><!-- /page-wrapper -->
+
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathApp Space IUA – Administration</title>
+  <link rel="icon" href="data:," />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ════════════ SIDEBAR ════════════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-brand">
+      <div class="sb-brand-icon">📐</div>
+      <div>
+        <div class="sb-brand-name">MathApp Space</div>
+        <div class="sb-brand-sub">IUA · Maths Appliquées L1</div>
+      </div>
+    </div>
+    <nav>
+      <div class="sb-section">
+        <div class="sb-section-label">Menu principal</div>
+        <a href="accueil.html"         class="sb-item"><span class="sb-item-icon">🏠</span>Tableau de bord</a>
+        <a href="cours.html"           class="sb-item"><span class="sb-item-icon">📚</span>Cours PDF</a>
+        <a href="examens.html"         class="sb-item"><span class="sb-item-icon">📝</span>Sujets d'examens</a>
+        <a href="ressources.html"      class="sb-item"><span class="sb-item-icon">🌐</span>Ressources</a>
+        <a href="filiere.html"         class="sb-item"><span class="sb-item-icon">🎓</span>La Filière MA</a>
+        <a href="dashboard_admin.html" class="sb-item active" id="sb-admin-link">
+          <span class="sb-item-icon">⚙️</span>Administration
+        </a>
+      </div>
+    </nav>
+    <div class="sb-user">
+      <div class="sb-avatar" id="sb-avatar">--</div>
+      <div>
+        <div class="sb-user-name" id="sb-name">Chargement…</div>
+        <span class="sb-user-role admin" id="sb-role">--</span>
+      </div>
+      <button class="sb-logout" onclick="logout()" title="Se déconnecter">🚪</button>
+    </div>
+  </aside>
+
+  <!-- ════════════ MAIN ════════════ -->
+  <div class="main-area">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-title">⚙️ Administration</div>
+        <div class="topbar-breadcrumb">Accueil <span>/ Administration</span></div>
+      </div>
+      <div class="topbar-right">
+        <span style="background:rgba(180,83,9,.1);color:#92400E;font-size:11px;font-weight:800;padding:6px 14px;border-radius:20px;">
+          🛡 Mode Administrateur
+        </span>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Bannière admin -->
+      <div class="admin-hero">
+        <div>
+          <div class="admin-badge">🛡 Espace réservé aux Administrateurs L2</div>
+          <h2>Tableau de bord Administration</h2>
+          <p>Gère les contenus, les comptes étudiants et les annonces du site MathApp Space IUA.</p>
+        </div>
+        <div class="big">⚙️</div>
+      </div>
+
+      <!-- Statistiques -->
+      <div class="admin-stats">
+        <div class="adm-sc">
+          <div class="ai" style="background:var(--pale);">👥</div>
+          <div class="av" id="adm-nb-etudiants">0</div>
+          <div class="al">Étudiants inscrits</div>
+          <div class="at info" id="adm-nb-admins">dont 0 admin(s)</div>
+        </div>
+        <div class="adm-sc">
+          <div class="ai" style="background:var(--pale);">📚</div>
+          <div class="av">12</div>
+          <div class="al">UE — Cours</div>
+          <div class="at up">↑ S1 & S2</div>
+        </div>
+        <div class="adm-sc">
+          <div class="ai" style="background:rgba(180,83,9,.08);">📝</div>
+          <div class="av">12</div>
+          <div class="al">Sujets d'examens</div>
+          <div class="at up">↑ Actifs</div>
+        </div>
+        <div class="adm-sc">
+          <div class="ai" style="background:rgba(22,163,74,.08);">🌐</div>
+          <div class="av">12</div>
+          <div class="al">Ressources</div>
+          <div class="at up">↑ Actifs</div>
+        </div>
+      </div>
+
+      <!-- Actions rapides -->
+      <h3 style="font-size:14px;font-weight:800;color:var(--royal);margin-bottom:14px;">⚡ Actions rapides</h3>
+      <div class="actions-grid">
+        <div class="action-tile" onclick="openModal('cours')">
+          <div class="at-icon">📚</div>
+          <div class="at-title">Ajouter un cours</div>
+          <div class="at-desc">Référencer un nouveau fichier PDF dans la liste des cours.</div>
+        </div>
+        <div class="action-tile" onclick="openModal('examen')">
+          <div class="at-icon">📝</div>
+          <div class="at-title">Ajouter un sujet</div>
+          <div class="at-desc">Enregistrer une photo de sujet d'examen ou de contrôle continu.</div>
+        </div>
+        <div class="action-tile" onclick="openModal('ressource')">
+          <div class="at-icon">🌐</div>
+          <div class="at-title">Ajouter une ressource</div>
+          <div class="at-desc">Ajouter un lien web ou une chaîne YouTube utile.</div>
+        </div>
+        <div class="action-tile" onclick="openModal('annonce')">
+          <div class="at-icon">📢</div>
+          <div class="at-title">Publier une annonce</div>
+          <div class="at-desc">Informer tous les étudiants d'un message important.</div>
+        </div>
+        <div class="action-tile"
+          onclick="document.getElementById('section-users').scrollIntoView({behavior:'smooth'})">
+          <div class="at-icon">👥</div>
+          <div class="at-title">Gérer les comptes</div>
+          <div class="at-desc">Voir les comptes enregistrés et supprimer si nécessaire.</div>
+        </div>
+        <div class="action-tile" onclick="exportUsers()">
+          <div class="at-icon">📥</div>
+          <div class="at-title">Exporter les inscrits</div>
+          <div class="at-desc">Télécharger la liste des comptes au format JSON.</div>
+        </div>
+      </div>
+
+      <!-- Tableau utilisateurs -->
+      <div id="section-users">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+          <h3 style="font-size:14px;font-weight:800;color:var(--royal);">👥 Comptes enregistrés</h3>
+          <input type="text" id="search-users" placeholder="🔍 Rechercher un utilisateur…"
+            oninput="renderUsers()"
+            style="background:var(--bg);border:1.5px solid var(--border);border-radius:9px;
+                padding:7px 13px;font-family:'Nunito',sans-serif;font-size:12px;
+                color:var(--text);outline:none;width:240px;" />
+        </div>
+
+        <div class="table-wrap">
+          <div class="t-head">
+            <span>Nom complet</span>
+            <span>Matricule</span>
+            <span>Rôle</span>
+            <span>Inscrit le</span>
+            <span>Actions</span>
+          </div>
+          <div id="users-tbody">
+            <div style="text-align:center;padding:32px;color:var(--muted);font-size:13px;">
+              Chargement…
+            </div>
+          </div>
+        </div>
+        <p id="no-users" style="display:none;text-align:center;padding:28px;color:var(--muted);font-size:13px;">
+          Aucun utilisateur trouvé.
+        </p>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 <span class="footer-brand">MathApp Space IUA</span> · L1 Maths Appliquées</span>
+      <div class="footer-links">
+        <a href="accueil.html">Accueil</a>
+        <a href="cours.html">Cours</a>
+        <a href="ressources.html">Ressources</a>
+        <a href="filiere.html">La Filière</a>
+      </div>
+      <span class="footer-credits">Fait avec ❤️ par la Promo L2 · IUA Abidjan</span>
+    </footer>
+
+  </div><!-- /main-area -->
+</div><!-- /app-shell -->
+
+<!-- ════════ MODALE ACTIONS ════════ -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="modal-title">Action</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+      <button class="btn-save"   id="modal-save-btn">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ MODALE CONFIRMATION SUPPRESSION ════════ -->
+<div class="modal-overlay" id="modal-confirm" onclick="if(event.target===this)closeConfirm()">
+  <div class="modal-box" style="max-width:400px;">
+    <div class="modal-head">
+      <h3 style="color:var(--red);">⚠️ Confirmer la suppression</h3>
+      <button class="modal-close" onclick="closeConfirm()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:14px;color:var(--text);line-height:1.7;" id="confirm-msg"></p>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closeConfirm()">Annuler</button>
+      <button id="confirm-ok-btn"
+        style="background:var(--red);color:#fff;border:none;border-radius:9px;
+              padding:10px 22px;font-family:'Nunito',sans-serif;
+              font-size:13px;font-weight:800;cursor:pointer;">
+        Supprimer définitivement
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/auth.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>

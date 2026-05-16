@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MathApp Space IUA – La Filière MA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/filiere.css">
+</head>
+<body>
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sb-brand">
+                <div class="sb-brand-icon">📐</div>
+                <div>
+                    <div class="sb-brand-name">MathApp Space</div>
+                    <div class="sb-brand-sub">IUA · Maths Appliquées L1</div>
+                </div>
+            </div>
+            <nav>
+                <div class="sb-section">
+                    <div class="sb-section-label">Menu principal</div>
+                    <a href="accueil.html"    class="sb-item"><span class="sb-item-icon">🏠</span>Tableau de bord</a>
+                    <a href="cours.html"      class="sb-item"><span class="sb-item-icon">📚</span>Cours PDF</a>
+                    <a href="examens.html"    class="sb-item"><span class="sb-item-icon">📝</span>Sujets d'examens</a>
+                    <a href="ressources.html" class="sb-item"><span class="sb-item-icon">🌐</span>Ressources</a>
+                    <a href="filiere.html"    class="sb-item active"><span class="sb-item-icon">🎓</span>La Filière MA</a>
+                    <a href="dashboard_admin.html" class="sb-item" id="sb-admin-link" style="display:none;"><span class="sb-item-icon">⚙️</span>Administration</a>
+                </div>
+            </nav>
+            <div class="sb-user">
+                <div class="sb-avatar" id="sb-avatar">--</div>
+                <div><div class="sb-user-name" id="sb-name">Chargement…</div><span class="sb-user-role etudiant" id="sb-role">--</span></div>
+                <button class="sb-logout" onclick="logout()" title="Se déconnecter">🚪</button>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="topbar-title">🎓 La Filière Maths Appliquées</div>
+                    <div class="topbar-breadcrumb">Accueil <span>/ La Filière MA</span></div>
+                </div>
+            </header>
+
+            <main class="page-content">
+
+                <!-- Hero -->
+                <div class="filiere-hero">
+                    <div style="position:relative;z-index:1;">
+                        <h2>Mathématiques Appliquées à l'IUA</h2>
+                        <p>Une formation qui allie rigueur mathématique et outils informatiques pour préparer aux défis du monde moderne et du marché de l'emploi.</p>
+                        <div class="fh-badges">
+                            <div class="fh-badge">🏫 IUA – Abidjan</div>
+                            <div class="fh-badge">📅 3 ans · Licence</div>
+                            <div class="fh-badge">📐 Maths + Informatique</div>
+                            <div class="fh-badge">🌍 Débouchés internationaux</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description + Capacités -->
+                <div class="f-grid2">
+                    <div class="f-card">
+                        <h3><span>📖</span> C'est quoi la filière ?</h3>
+                        <ul>
+                            <li>Formation en Algèbre, Logique, Analyse Réelle et Calcul (S1 & S2)</li>
+                            <li>Informatique : Algo, Programmation, Web (HTML/CSS/JS), Bureautique</li>
+                            <li>Statistiques, Probabilités, Géométrie Vectorielle</li>
+                            <li>Passerelle vers master, grandes écoles ou doctorat</li>
+                            <li>Comptabilité, Économie, Techniques d.expression (FR & EN)</li>
+                        </ul>
+                    </div>
+                    <div class="f-card">
+                        <h3><span>💪</span> Capacités requises</h3>
+                        <ul>
+                            <li>Rigueur dans le raisonnement logique et déductif</li>
+                            <li>Curiosité intellectuelle et goût pour l'abstraction</li>
+                            <li>Bonne base en mathématiques du secondaire</li>
+                            <li>Capacité à travailler en autonomie et de façon régulière</li>
+                            <li>Ouverture à l'informatique et aux nouvelles technologies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Débouchés -->
+                <div class="section-card" style="margin-bottom:18px;">
+                    <div class="section-card-head"><h3>💼 Débouchés de la filière</h3></div>
+                    <div class="section-card-body">
+                        <div class="deb-grid">
+                            <div class="deb-card"><div class="deb-icon">📊</div><div class="deb-title">Analyste de données</div><div class="deb-desc">Traitement et interprétation de données pour les entreprises et organisations.</div></div>
+                            <div class="deb-card"><div class="deb-icon">🤖</div><div class="deb-title">Data Scientist</div><div class="deb-desc">Machine learning, intelligence artificielle et modélisation statistique avancée.</div></div>
+                            <div class="deb-card"><div class="deb-icon">📉</div><div class="deb-title">Actuaire / Financier</div><div class="deb-desc">Calcul des risques en assurance, banque et finance quantitative.</div></div>
+                            <div class="deb-card"><div class="deb-icon">🏫</div><div class="deb-title">Enseignant / Chercheur</div><div class="deb-desc">Après master et doctorat, carrière académique dans l'enseignement supérieur.</div></div>
+                            <div class="deb-card"><div class="deb-icon">💻</div><div class="deb-title">Développeur / Ingénieur</div><div class="deb-desc">Développement logiciel avec une solide base algorithmique et mathématique.</div></div>
+                            <div class="deb-card"><div class="deb-icon">📡</div><div class="deb-title">Télécommunications</div><div class="deb-desc">Traitement du signal, réseaux de communication, optimisation des systèmes.</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ce que le diplôme IUA offre -->
+                <div class="f-card" style="margin-bottom:18px;">
+                    <h3><span>🏆</span> Ce que le diplôme de l'IUA t'apporte</h3>
+                    <ul>
+                    <li>Un diplôme reconnu par l'État ivoirien et le système LMD</li>
+                    <li>Une formation polyvalente maths + info appréciée des employeurs</li>
+                    <li>L'accès aux masters en Côte d'Ivoire et à l'international</li>
+                    <li>Un réseau d'anciens étudiants actifs dans le privé et le public</li>
+                    <li>Une passerelle vers les concours de la fonction publique (enseignement, statistique)</li>
+                    </ul>
+                </div>
+
+                <!-- Conseils -->
+                <div class="section-card">
+                    <div class="section-card-head"><h3>💡 Conseils pour réussir en L1</h3></div>
+                    <div class="section-card-body">
+                        <div class="conseil-grid">
+                            <div class="conseil-card">
+                                <div class="c-num">01</div>
+                                <div class="c-title">Travailler régulièrement</div>
+                                <div class="c-text">Les maths s'apprennent dans la durée. Fais des exercices chaque jour, même 30 minutes. L'accumulation fait la différence.</div>
+                            </div>
+                            <div class="conseil-card">
+                                <div class="c-num">02</div>
+                                <div class="c-title">Maîtriser les fondamentaux</div>
+                                <div class="c-text">Algèbre et Analyse sont les piliers. Assure-toi de comprendre chaque notion avant de passer à la suivante. Ne laisse rien derrière.</div>
+                            </div>
+                            <div class="conseil-card">
+                                <div class="c-num">03</div>
+                                <div class="c-title">Utiliser les ressources</div>
+                                <div class="c-text">Khan Academy, MIT OCW, El Jj et les autres ressources de ce site sont tes alliés. Exploite-les sans modération !</div>
+                            </div>
+                            <div class="conseil-card">
+                                <div class="c-num">04</div>
+                                <div class="c-title">Faire les anciens sujets</div>
+                                <div class="c-text">Entraîne-toi sur les sujets d'examens passés. C'est le meilleur moyen de comprendre ce qu'on attend de toi.</div>
+                            </div>
+                            <div class="conseil-card">
+                                <div class="c-num">05</div>
+                                <div class="c-title">Travailler en groupe</div>
+                                <div class="c-text">Explique à tes camarades ce que tu as compris. Enseigner, c'est la meilleure façon d'apprendre et de consolider ses connaissances.</div>
+                            </div>
+                            <div class="conseil-card">
+                                <div class="c-num">06</div>
+                                <div class="c-title">Ne jamais abandonner</div>
+                                <div class="c-text">Les maths, ça accroche parfois. Un sujet difficile aujourd'hui sera une force demain. Persévère et demande de l'aide quand il le faut.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+            <footer class="site-footer">
+                <span>© 2026 <span class="footer-brand">MathApp Space IUA</span> · L1 Maths Appliquées</span>
+                <div class="footer-links"><a href="accueil.html">Accueil</a><a href="cours.html">Cours</a><a href="ressources.html">Ressources</a><a href="filiere.html">La Filière</a></div>
+                <span class="footer-credits">Fait avec ❤️ par la Promo L2 · IUA Abidjan</span>
+            </footer>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathApp Space IUA – Cours PDF</title>
+  <link rel="icon" href="data:," />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/cours.css" />
+  <style>
+    /* ECUE item avec bouton individuel */
+    .ecue-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--bg2);
+      line-height: 1.4;
+    }
+    .ecue-list li:last-child { border-bottom: none; }
+
+    .ecue-name { flex: 1; }
+
+    .btn-ecue-dl {
+      font-size: 10px;
+      font-weight: 800;
+      background: var(--pale);
+      color: var(--royal);
+      border: none;
+      border-radius: 6px;
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: var(--trans);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-ecue-dl:hover { background: var(--royal); color: #fff; }
+
+    /* On retire le bouton global dans le footer de la carte */
+    .ue-card-foot .btn-dl { display: none; }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-brand">
+      <div class="sb-brand-icon">📐</div>
+      <div>
+        <div class="sb-brand-name">MathApp Space</div>
+        <div class="sb-brand-sub">IUA · Maths Appliquées L1</div>
+      </div>
+    </div>
+    <nav><div class="sb-section">
+      <div class="sb-section-label">Menu principal</div>
+      <a href="accueil.html"    class="sb-item"><span class="sb-item-icon">🏠</span>Tableau de bord</a>
+      <a href="cours.html"      class="sb-item active"><span class="sb-item-icon">📚</span>Cours PDF</a>
+      <a href="examens.html"    class="sb-item"><span class="sb-item-icon">📝</span>Sujets d'examens</a>
+      <a href="ressources.html" class="sb-item"><span class="sb-item-icon">🌐</span>Ressources</a>
+      <a href="filiere.html"    class="sb-item"><span class="sb-item-icon">🎓</span>La Filière MA</a>
+      <a href="dashboard_admin.html" class="sb-item" id="sb-admin-link" style="display:none;">
+        <span class="sb-item-icon">⚙️</span>Administration
+      </a>
+    </div></nav>
+    <div class="sb-user">
+      <div class="sb-avatar" id="sb-avatar">--</div>
+      <div><div class="sb-user-name" id="sb-name">Chargement…</div><span class="sb-user-role etudiant" id="sb-role">--</span></div>
+      <button class="sb-logout" onclick="logout()" title="Se déconnecter">🚪</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-area">
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-title">📚 Cours PDF — L1 Maths Appliquées 2024-2025</div>
+        <div class="topbar-breadcrumb">Accueil <span>/ Cours PDF</span></div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-bar">
+          <span>🔍</span>
+          <input type="text" id="search-cours" placeholder="Rechercher…" oninput="applyFilter()" />
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Filtres -->
+      <div class="filter-bar" id="filter-bar">
+        <div class="chip active" data-filter="tous">Tous</div>
+        <div class="chip" data-filter="S1">Semestre 1</div>
+        <div class="chip" data-filter="S2">Semestre 2</div>
+        <div class="chip" data-filter="maths">Mathématiques</div>
+        <div class="chip" data-filter="info">Informatique</div>
+        <div class="chip" data-filter="autre">Langue & Économie</div>
+      </div>
+
+      <!-- ══ SEMESTRE 1 ══ -->
+      <div class="sem-title" id="label-S1">
+        <span class="sem-badge">S1</span> Semestre 1
+      </div>
+
+      <div class="ue-grid" id="cours-grid" style="margin-bottom:36px;">
+
+        <div class="ue-card" data-sem="S1" data-cat="maths">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#1c3d7a,#2b5ac0);">🔢</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 1</div>
+            <div class="ue-name">Algèbre</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Structures algébriques</span>
+                <button class="btn-ecue-dl" onclick="dlCours('algebre_structures_algebriques_s1.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Géométrie euclidienne</span>
+                <button class="btn-ecue-dl" onclick="dlCours('algebre_geometrie_euclidienne_s1.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 6 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S1" data-cat="maths">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#312e81,#6d28d9);">∧</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 1</div>
+            <div class="ue-name">Logique Mathématique & Maths Discrètes</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Éléments de Logique mathématique</span>
+                <button class="btn-ecue-dl" onclick="dlCours('logique_elements_s1.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">2 cr</span>
+                <span class="ecue-name">Arithmétique</span>
+                <button class="btn-ecue-dl" onclick="dlCours('logique_arithmetique_s1.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 5 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S1" data-cat="maths">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#065f46,#059669);">∞</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 1</div>
+            <div class="ue-name">Analyse Réelle</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Nombre réel et suites numériques</span>
+                <button class="btn-ecue-dl" onclick="dlCours('analyse_suites_numeriques_s1.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Fonctions réelles d'une variable réelle</span>
+                <button class="btn-ecue-dl" onclick="dlCours('analyse_fonctions_reelles_s1.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 6 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S1" data-cat="info">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#164e63,#0891b2);">💻</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 1</div>
+            <div class="ue-name">Introduction à l'Informatique</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Introduction à l'ordinateur</span>
+                <button class="btn-ecue-dl" onclick="dlCours('info_intro_ordinateur_s1.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Introduction à l'algorithme et pseudocode</span>
+                <button class="btn-ecue-dl" onclick="dlCours('info_algorithme_pseudocode_s1.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 6 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S1" data-cat="info">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#0c4a6e,#0284c7);">🖥️</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 1</div>
+            <div class="ue-name">Bureautique</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">1 cr</span>
+                <span class="ecue-name">Word</span>
+                <button class="btn-ecue-dl" onclick="dlCours('bureautique_word_s1.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">1 cr</span>
+                <span class="ecue-name">Excel</span>
+                <button class="btn-ecue-dl" onclick="dlCours('bureautique_excel_s1.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">1 cr</span>
+                <span class="ecue-name">PowerPoint</span>
+                <button class="btn-ecue-dl" onclick="dlCours('bureautique_powerpoint_s1.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">3 ECUE · 3 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S1" data-cat="autre">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#7c2d12,#c2410c);">🗣️</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 1</div>
+            <div class="ue-name">Techniques d'Expression</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">2 cr</span>
+                <span class="ecue-name">Français</span>
+                <button class="btn-ecue-dl" onclick="dlCours('expression_francais_s1.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">2 cr</span>
+                <span class="ecue-name">Anglais</span>
+                <button class="btn-ecue-dl" onclick="dlCours('expression_anglais_s1.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 4 crédits</span>
+          </div>
+        </div>
+
+      </div><!-- /S1 -->
+
+      <!-- ══ SEMESTRE 2 ══ -->
+      <div class="sem-title" id="label-S2">
+        <span class="sem-badge">S2</span> Semestre 2
+      </div>
+
+      <div class="ue-grid" id="cours-grid-s2">
+
+        <div class="ue-card" data-sem="S2" data-cat="maths">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#4a044e,#9333ea);">📐</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 2</div>
+            <div class="ue-name">Géométrie & Probabilité</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">2 cr</span>
+                <span class="ecue-name">Espaces Vectoriels et Calculs matriciels</span>
+                <button class="btn-ecue-dl" onclick="dlCours('geom_espaces_vectoriels_s2.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">4 cr</span>
+                <span class="ecue-name">Analyse combinatoire & Calcul de probabilités</span>
+                <button class="btn-ecue-dl" onclick="dlCours('geom_probabilites_s2.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 6 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S2" data-cat="maths">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#14532d,#16a34a);">📊</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 2</div>
+            <div class="ue-name">Statistiques</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">1 cr</span>
+                <span class="ecue-name">Statistiques univariés</span>
+                <button class="btn-ecue-dl" onclick="dlCours('stats_univaries_s2.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">1 cr</span>
+                <span class="ecue-name">Statistiques bivariés</span>
+                <button class="btn-ecue-dl" onclick="dlCours('stats_bivaries_s2.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 2 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S2" data-cat="maths">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#1e3a5f,#3b82f6);">∫</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 2</div>
+            <div class="ue-name">Calcul Différentiel et Intégral</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Fonction spéciale élémentaire & Calcul intégral</span>
+                <button class="btn-ecue-dl" onclick="dlCours('calcul_fonctions_speciales_s2.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">2 cr</span>
+                <span class="ecue-name">Équations différentielles</span>
+                <button class="btn-ecue-dl" onclick="dlCours('calcul_equations_differentielles_s2.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 5 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S2" data-cat="info">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#1c1917,#57534e);">🧮</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 2</div>
+            <div class="ue-name">Algorithme & Structures de Données</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Introduction aux structures de données</span>
+                <button class="btn-ecue-dl" onclick="dlCours('algo_structures_donnees_s2.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Introduction à la programmation</span>
+                <button class="btn-ecue-dl" onclick="dlCours('algo_intro_programmation_s2.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 6 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S2" data-cat="info">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#0f172a,#334155);">🌐</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 2</div>
+            <div class="ue-name">Introduction à la Programmation Web</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">Introduction à la programmation web</span>
+                <button class="btn-ecue-dl" onclick="dlCours('web_intro_html_s2.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">3 cr</span>
+                <span class="ecue-name">CSS et JavaScript</span>
+                <button class="btn-ecue-dl" onclick="dlCours('web_css_javascript_s2.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 6 crédits</span>
+          </div>
+        </div>
+
+        <div class="ue-card" data-sem="S2" data-cat="autre">
+          <div class="ue-card-top" style="background:linear-gradient(135deg,#78350f,#d97706);">💰</div>
+          <div class="ue-card-body">
+            <div class="ue-sem">UE · Semestre 2</div>
+            <div class="ue-name">Comptabilité & Économie</div>
+            <ul class="ecue-list">
+              <li>
+                <span class="ecue-cr">2 cr</span>
+                <span class="ecue-name">Comptabilité générale</span>
+                <button class="btn-ecue-dl" onclick="dlCours('compta_comptabilite_generale_s2.pdf')">⬇ PDF</button>
+              </li>
+              <li>
+                <span class="ecue-cr">2 cr</span>
+                <span class="ecue-name">Macroéconomie</span>
+                <button class="btn-ecue-dl" onclick="dlCours('compta_macroeconomie_s2.pdf')">⬇ PDF</button>
+              </li>
+            </ul>
+          </div>
+          <div class="ue-card-foot">
+            <span class="ue-meta">2 ECUE · 4 crédits</span>
+          </div>
+        </div>
+
+      </div><!-- /S2 -->
+
+      <div id="no-result" style="display:none;text-align:center;padding:48px 20px;color:var(--muted);">
+        <div style="font-size:48px;margin-bottom:12px;">🔍</div>
+        <div style="font-size:15px;font-weight:700;">Aucun cours trouvé</div>
+        <div style="font-size:13px;margin-top:6px;">Essaie un autre mot-clé ou filtre.</div>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 <span class="footer-brand">MathApp Space IUA</span> · L1 Maths Appliquées</span>
+      <div class="footer-links">
+        <a href="accueil.html">Accueil</a><a href="cours.html">Cours</a>
+        <a href="ressources.html">Ressources</a><a href="filiere.html">La Filière</a>
+      </div>
+      <span class="footer-credits">Fait avec ❤️ par la Promo L2 · IUA Abidjan</span>
+    </footer>
+  </div>
+</div>
+
+<script src="../js/auth.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/cours.js"></script>
+</body>
+</html>

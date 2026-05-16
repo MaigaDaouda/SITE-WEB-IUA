@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MathApp Space IUA – Sujets d'examens</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/examens.css">
+</head>
+<body>
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sb-brand">
+                <div class="sb-brand-icon">📐</div>
+                <div>
+                    <div class="sb-brand-name">MathApp Space</div>
+                    <div class="sb-brand-sub">IUA · Maths Appliquées L1</div>
+                </div>
+            </div>
+            <nav>
+                <div class="sb-section">
+                    <div class="sb-section-label">Menu principal</div>
+                    <a href="accueil.html"    class="sb-item"><span class="sb-item-icon">🏠</span>Tableau de bord</a>
+                    <a href="cours.html"      class="sb-item"><span class="sb-item-icon">📚</span>Cours PDF</a>
+                    <a href="examens.html"    class="sb-item active"><span class="sb-item-icon">📝</span>Sujets d'examens</a>
+                    <a href="ressources.html" class="sb-item"><span class="sb-item-icon">🌐</span>Ressources</a>
+                    <a href="filiere.html"    class="sb-item"><span class="sb-item-icon">🎓</span>La Filière MA</a>
+                    <a href="dashboard_admin.html" class="sb-item" id="sb-admin-link" style="display:none;"><span class="sb-item-icon">⚙️</span>Administration</a>
+                </div>
+            </nav>
+            <div class="sb-user">
+                <div class="sb-avatar" id="sb-avatar">--</div>
+                <div>
+                    <div class="sb-user-name" id="sb-name">Chargement…</div>
+                    <span class="sb-user-role etudiant" id="sb-role">--</span>
+                </div>
+                <button class="sb-logout" onclick="logout()" title="Se déconnecter">🚪</button>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="topbar-title">📝 Sujets d'examens — 2024-2025</div>
+                    <div class="topbar-breadcrumb">Accueil <span>/ Sujets d'examens</span></div>
+                </div>
+                <div class="topbar-right">
+                    <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" id="search-examen" placeholder="Rechercher…" oninput="filterExamens()" />
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+
+                <!-- Filtres -->
+                <div class="filter-bar" id="filter-ex">
+                    <div class="chip active" data-filter="tous">Tous</div>
+                    <div class="chip" data-filter="S1">Semestre 1</div>
+                    <div class="chip" data-filter="S2">Semestre 2</div>
+                    <div class="chip" data-filter="examen">Examens</div>
+                    <div class="chip" data-filter="cc">Contrôle Continu</div>
+                    <div class="chip" data-filter="session2">Session 2</div>
+                </div>
+
+                <!-- ══════ SEMESTRE 1 ══════ -->
+                <div class="sem-title" id="label-S1">
+                    <span class="sem-badge">S1</span> Semestre 1
+                </div>
+
+                <div class="exam-grid" id="exam-grid-s1" style="margin-bottom:36px;">
+
+                    <div class="exam-card" data-sem="S1" data-type="examen">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/algebre_partiel_s1.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Algèbre</div>
+                            <div class="exam-title">Examen — Structures algébriques</div>
+                            <div class="exam-meta">📅 Semestre 1 · Examen</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Algèbre – Examen S1 (2024-25)','../assets/examens/algebre_partiel_s1.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/algebre_partiel_s1.jpg','algebre_partiel_s1.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S1" data-type="cc">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/algebre_final_s1.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Algèbre</div>
+                            <div class="exam-title">Contrôle Continu</div>
+                            <div class="exam-meta">📅 Semestre 1 · Contrôle Continu</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Algèbre – CC S1 (2024-25)','../assets/examens/algebre_final_s1.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/algebre_final_s1.jpg','algebre_final_s1.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S1" data-type="examen">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/logique_partiel_s1.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Logique & Maths Discrètes</div>
+                            <div class="exam-title">Examen — Logique mathématique</div>
+                            <div class="exam-meta">📅 Semestre 1 · Examen</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Logique – Examen S1 (2024-25)','../assets/examens/logique_partiel_s1.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/logique_partiel_s1.jpg','logique_partiel_s1.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S1" data-type="cc">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/analyse_reelle_final_s1.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Analyse Réelle</div>
+                            <div class="exam-title">Contrôle Continu</div>
+                            <div class="exam-meta">📅 Semestre 1 · Contrôle Continu</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Analyse Réelle – CC S1 (2024-25)','../assets/examens/analyse_reelle_final_s1.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/analyse_reelle_final_s1.jpg','analyse_reelle_final_s1.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S1" data-type="examen">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/info_partiel_s1.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Introduction à l'Informatique</div>
+                            <div class="exam-title">Examen — Algorithme & Pseudocode</div>
+                            <div class="exam-meta">📅 Semestre 1 · Examen</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Informatique – Examen S1 (2024-25)','../assets/examens/info_partiel_s1.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/info_partiel_s1.jpg','info_partiel_s1.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S1" data-type="session2">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/algebre_rattrapage_s1.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2023–24</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Algèbre</div>
+                            <div class="exam-title">Session 2</div>
+                            <div class="exam-meta">📅 Semestre 1 · Session 2 · 2023-24</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Algèbre – Session 2 S1 (2023-24)','../assets/examens/algebre_rattrapage_s1.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/algebre_rattrapage_s1.jpg','algebre_rattrapage_s1.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                </div><!-- /grid S1 -->
+
+                <!-- ══════ SEMESTRE 2 ══════ -->
+                <div class="sem-title" id="label-S2">
+                    <span class="sem-badge">S2</span> Semestre 2
+                </div>
+
+                <div class="exam-grid" id="exam-grid-s2">
+
+                    <div class="exam-card" data-sem="S2" data-type="examen">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/geom_proba_partiel_s2.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Géométrie & Probabilité</div>
+                            <div class="exam-title">Examen — Espaces Vectoriels</div>
+                            <div class="exam-meta">📅 Semestre 2 · Examen</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Géométrie & Probabilité – Examen S2','../assets/examens/geom_proba_partiel_s2.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/geom_proba_partiel_s2.jpg','geom_proba_partiel_s2.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S2" data-type="cc">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/calcul_diff_final_s2.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Calcul Différentiel & Intégral</div>
+                            <div class="exam-title">Contrôle Continu</div>
+                            <div class="exam-meta">📅 Semestre 2 · Contrôle Continu</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Calcul Différentiel – CC S2','../assets/examens/calcul_diff_final_s2.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/calcul_diff_final_s2.jpg','calcul_diff_final_s2.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S2" data-type="examen">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/stats_partiel_s2.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Statistiques</div>
+                            <div class="exam-title">Examen — Stats univariés & bivariés</div>
+                            <div class="exam-meta">📅 Semestre 2 · Examen</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Statistiques – Examen S2','../assets/examens/stats_partiel_s2.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/stats_partiel_s2.jpg','stats_partiel_s2.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S2" data-type="cc">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/algo_final_s2.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Algorithme & Structures de Données</div>
+                            <div class="exam-title">Contrôle Continu</div>
+                            <div class="exam-meta">📅 Semestre 2 · Contrôle Continu</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Algo & Structures – CC S2','../assets/examens/algo_final_s2.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/algo_final_s2.jpg','algo_final_s2.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S2" data-type="examen">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/web_partiel_s2.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2024–25</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Programmation Web</div>
+                            <div class="exam-title">Examen — HTML / CSS / JS</div>
+                            <div class="exam-meta">📅 Semestre 2 · Examen</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Prog. Web – Examen S2','../assets/examens/web_partiel_s2.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/web_partiel_s2.jpg','web_partiel_s2.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card" data-sem="S2" data-type="session2">
+                        <div class="exam-thumb">
+                            <img src="../assets/examens/calcul_diff_rattrapage_s2.jpg" alt=""
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:48px;">📄</div>
+                            <span class="exam-yr-badge">2023–24</span>
+                        </div>
+                        <div class="exam-card-body">
+                            <div class="exam-mat">Calcul Différentiel & Intégral</div>
+                            <div class="exam-title">Session 2</div>
+                            <div class="exam-meta">📅 Semestre 2 · Session 2 · 2023-24</div>
+                        </div>
+                        <div class="exam-card-foot">
+                            <button class="btn-exam view" onclick="openModal('Calcul Différentiel – Session 2 S2 (2023-24)','../assets/examens/calcul_diff_rattrapage_s2.jpg')">👁 Voir</button>
+                            <button class="btn-exam dl"   onclick="dlEx('../assets/examens/calcul_diff_rattrapage_s2.jpg','calcul_diff_rattrapage_s2.jpg')">⬇ Sauver</button>
+                        </div>
+                    </div>
+
+                </div><!-- /grid S2 -->
+
+                <div id="no-result-ex" style="display:none;text-align:center;padding:48px 20px;color:var(--muted);">
+                    <div style="font-size:48px;margin-bottom:12px;">🔍</div>
+                    <div style="font-size:15px;font-weight:700;">Aucun sujet trouvé</div>
+                    <div style="font-size:13px;margin-top:6px;">Essaie un autre filtre.</div>
+                </div>
+
+            </main>
+
+            <footer class="site-footer">
+                <span>© 2026 <span class="footer-brand">MathApp Space IUA</span> · L1 Maths Appliquées</span>
+                <div class="footer-links"><a href="accueil.html">Accueil</a><a href="cours.html">Cours</a><a href="ressources.html">Ressources</a><a href="filiere.html">La Filière</a></div>
+                <span class="footer-credits">Fait avec ❤️ par la Promo L2 · IUA Abidjan</span>
+            </footer>
+        </div>
+    </div>
+
+    <!-- MODALE -->
+    <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+        <div class="modal-box">
+            <div class="modal-head">
+                <h3 id="modal-title">Sujet</h3>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body"><img id="modal-img" src="" alt="Sujet d'examen" /></div>
+            <div class="modal-foot">
+                <button class="btn-modal-close" onclick="closeModal()">Fermer</button>
+                <button class="btn-modal-dl" id="modal-dl-btn">⬇ Télécharger</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/examens.js"></script>
+</body>
+</html>

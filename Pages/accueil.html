@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathApp Space IUA – Accueil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ══════════════════════════════════════
+       SIDEBAR
+  ══════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sb-brand">
+      <div class="sb-brand-icon">📐</div>
+      <div>
+        <div class="sb-brand-name">MathApp Space</div>
+        <div class="sb-brand-sub">IUA · Maths Appliquées L1</div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="sb-section">
+        <div class="sb-section-label">Menu principal</div>
+
+        <a href="accueil.html" class="sb-item active">
+          <span class="sb-item-icon">🏠</span>
+          Tableau de bord
+        </a>
+
+        <a href="cours.html" class="sb-item">
+          <span class="sb-item-icon">📚</span>
+          Cours PDF
+        </a>
+
+        <a href="examens.html" class="sb-item">
+          <span class="sb-item-icon">📝</span>
+          Sujets d'examens
+        </a>
+
+        <a href="ressources.html" class="sb-item">
+          <span class="sb-item-icon">🌐</span>
+          Ressources
+        </a>
+
+        <a href="filiere.html" class="sb-item">
+          <span class="sb-item-icon">🎓</span>
+          La Filière MA
+        </a>
+
+        <!-- Visible uniquement pour les admins (géré par main.js) -->
+        <a href="dashboard_admin.html" class="sb-item" id="sb-admin-link" style="display:none;">
+          <span class="sb-item-icon">⚙️</span>
+          Administration
+        </a>
+      </div>
+    </nav>
+
+    <!-- Utilisateur connecté -->
+    <div class="sb-user">
+      <div class="sb-avatar" id="sb-avatar">--</div>
+      <div>
+        <div class="sb-user-name" id="sb-name">Chargement…</div>
+        <span class="sb-user-role etudiant" id="sb-role">--</span>
+      </div>
+      <button class="sb-logout" onclick="logout()" title="Se déconnecter">🚪</button>
+    </div>
+
+  </aside>
+
+  <!-- ══════════════════════════════════════
+       ZONE PRINCIPALE
+  ══════════════════════════════════════ -->
+  <div class="main-area">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-title">Tableau de bord</div>
+        <div class="topbar-breadcrumb">Accueil <span>/ Tableau de bord</span></div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-bar">
+          <span>🔍</span>
+          <input type="text" placeholder="Rechercher…" />
+        </div>
+        <div class="notif-btn" title="Notifications">
+          🔔
+          <div class="notif-dot"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contenu -->
+    <main class="page-content">
+
+      <!-- Bannière de bienvenue -->
+      <div class="hero-banner">
+        <div class="hero-text">
+          <div class="hero-title" id="hero-greeting">Bienvenue 👋</div>
+          <p class="hero-desc">
+            Ton espace L1 Mathématiques Appliquées à l'IUA.
+            Cours, examens et ressources — tout est ici.
+          </p>
+          <a href="cours.html" class="hero-btn">Explorer les cours →</a>
+        </div>
+        <div class="hero-icon">📐</div>
+      </div>
+
+      <!-- Statistiques -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">📚</div>
+          <div class="stat-value">12</div>
+          <div class="stat-label">UE disponibles</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon gold">📝</div>
+          <div class="stat-value">28</div>
+          <div class="stat-label">Sujets d'examens</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">🌐</div>
+          <div class="stat-value">15</div>
+          <div class="stat-label">Ressources utiles</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red">👥</div>
+          <div class="stat-value" id="stat-etudiants">—</div>
+          <div class="stat-label">Étudiants inscrits</div>
+        </div>
+      </div>
+
+      <!-- Ajouts récents + Annonces -->
+      <div class="two-col">
+
+        <!-- Ajouts récents -->
+        <div class="section-card">
+          <div class="section-card-head">
+            <h3>📌 Ajouts récents</h3>
+            <a href="cours.html" class="see-all">Voir tout →</a>
+          </div>
+          <div class="section-card-body">
+
+            <div class="recent-item">
+              <div class="recent-item-icon ri-pdf">📄</div>
+              <div class="recent-item-text">
+                <div class="ri-title">Cours – Algèbre Linéaire (Chap. 4)</div>
+                <div class="ri-meta">PDF · 2,3 Mo · il y a 2 jours</div>
+              </div>
+              <span class="ri-badge new">Nouveau</span>
+            </div>
+
+            <div class="recent-item">
+              <div class="recent-item-icon ri-exam">📝</div>
+              <div class="recent-item-text">
+                <div class="ri-title">Sujet Partiel – Analyse 1 (2023-24)</div>
+                <div class="ri-meta">Image · Semestre 2</div>
+              </div>
+              <span class="ri-badge exam">Examen</span>
+            </div>
+
+            <div class="recent-item">
+              <div class="recent-item-icon ri-link">🌐</div>
+              <div class="recent-item-text">
+                <div class="ri-title">Lien – Cours de Probabilités (MIT OCW)</div>
+                <div class="ri-meta">Site web · Probabilités</div>
+              </div>
+              <span class="ri-badge ressource">Ressource</span>
+            </div>
+
+            <div class="recent-item">
+              <div class="recent-item-icon ri-pdf">📄</div>
+              <div class="recent-item-text">
+                <div class="ri-title">Cours – Statistiques Descriptives</div>
+                <div class="ri-meta">PDF · 1,8 Mo · il y a 5 jours</div>
+              </div>
+            </div>
+
+            <div class="recent-item">
+              <div class="recent-item-icon ri-video">▶️</div>
+              <div class="recent-item-text">
+                <div class="ri-title">Chaîne YouTube – El Jj (Maths Sup)</div>
+                <div class="ri-meta">YouTube · Analyse & Algèbre</div>
+              </div>
+              <span class="ri-badge new">Nouveau</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Annonces -->
+        <div class="section-card">
+          <div class="section-card-head">
+            <h3>📢 Annonces</h3>
+          </div>
+          <div class="section-card-body">
+
+            <div class="annonce-item">
+              <div class="ann-dot blue"></div>
+              <div>
+                <div class="ann-title">Dépôt du sujet final de Maths</div>
+                <div class="ann-date">05 mai 2026</div>
+              </div>
+            </div>
+
+            <div class="annonce-item">
+              <div class="ann-dot gold"></div>
+              <div>
+                <div class="ann-title">Nouveau sujet d'examen ajouté</div>
+                <div class="ann-date">02 mai 2026</div>
+              </div>
+            </div>
+
+            <div class="annonce-item">
+              <div class="ann-dot green"></div>
+              <div>
+                <div class="ann-title">Bienvenue aux nouveaux L1 !</div>
+                <div class="ann-date">20 avr. 2026</div>
+              </div>
+            </div>
+
+            <div class="annonce-item">
+              <div class="ann-dot blue"></div>
+              <div>
+                <div class="ann-title">3 chaînes YouTube ajoutées</div>
+                <div class="ann-date">15 avr. 2026</div>
+              </div>
+            </div>
+
+            <div class="annonce-item">
+              <div class="ann-dot gold"></div>
+              <div>
+                <div class="ann-title">Site officiellement en ligne</div>
+                <div class="ann-date">10 avr. 2026</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /two-col -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span>© 2026 <span class="footer-brand">MathApp Space IUA</span> · L1 Maths Appliquées</span>
+      <div class="footer-links">
+        <a href="accueil.html">Accueil</a>
+        <a href="cours.html">Cours</a>
+        <a href="ressources.html">Ressources</a>
+        <a href="filiere.html">La Filière</a>
+      </div>
+      <span class="footer-credits">Fait avec ❤️ par la Promo L2 · IUA Abidjan</span>
+    </footer>
+
+  </div><!-- /main-area -->
+</div><!-- /app-shell -->
+
+<script src="../js/auth.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

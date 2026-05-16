@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MathApp Space IUA – Ressources</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/ressources.css">
+</head>
+<body>
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sb-brand">
+            <div class="sb-brand-icon">📐</div>
+            <div><div class="sb-brand-name">MathApp Space</div><div class="sb-brand-sub">IUA · Maths Appliquées L1</div></div>
+            </div>
+            <nav><div class="sb-section">
+            <div class="sb-section-label">Menu principal</div>
+            <a href="accueil.html"    class="sb-item"><span class="sb-item-icon">🏠</span>Tableau de bord</a>
+            <a href="cours.html"      class="sb-item"><span class="sb-item-icon">📚</span>Cours PDF</a>
+            <a href="examens.html"    class="sb-item"><span class="sb-item-icon">📝</span>Sujets d'examens</a>
+            <a href="ressources.html" class="sb-item active"><span class="sb-item-icon">🌐</span>Ressources</a>
+            <a href="filiere.html"    class="sb-item"><span class="sb-item-icon">🎓</span>La Filière MA</a>
+            <a href="dashboard_admin.html" class="sb-item" id="sb-admin-link" style="display:none;"><span class="sb-item-icon">⚙️</span>Administration</a>
+            </div></nav>
+            <div class="sb-user">
+            <div class="sb-avatar" id="sb-avatar">--</div>
+            <div><div class="sb-user-name" id="sb-name">Chargement…</div><span class="sb-user-role etudiant" id="sb-role">--</span></div>
+            <button class="sb-logout" onclick="logout()" title="Se déconnecter">🚪</button>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="topbar-title">🌐 Ressources utiles</div>
+                    <div class="topbar-breadcrumb">Accueil <span>/ Ressources</span></div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="res-tabs">
+                    <button class="res-tab active" onclick="switchTab('sites',this)">🌐 Sites web</button>
+                    <button class="res-tab"        onclick="switchTab('youtube',this)">▶️ Chaînes YouTube</button>
+                </div>
+
+                <!-- Sites web -->
+                <div class="res-panel active" id="panel-sites">
+                    <div class="res-grid">
+                        <div class="res-card">
+                            <div class="res-logo web">🌐</div>
+                            <div class="res-info">
+                                <div class="res-name">Khan Academy</div>
+                                <div class="res-desc">Cours complets et exercices en maths : algèbre, calcul, probabilités. Gratuit, disponible en français.</div>
+                                <div class="res-tags"><span class="res-tag">Algèbre</span><span class="res-tag">Analyse</span><span class="res-tag">Probas</span></div>
+                                <a class="btn-open" href="https://fr.khanacademy.org" target="_blank" rel="noopener">Ouvrir ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo web">🎓</div>
+                            <div class="res-info">
+                                <div class="res-name">MIT OpenCourseWare</div>
+                                <div class="res-desc">Ressources officielles du MIT pour les mathématiques universitaires. Cours, notes et examens corrigés.</div>
+                                <div class="res-tags"><span class="res-tag green">Analyse</span><span class="res-tag green">Algèbre</span></div>
+                                <a class="btn-open" href="https://ocw.mit.edu/courses/mathematics/" target="_blank" rel="noopener">Ouvrir ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo wiki">📖</div>
+                            <div class="res-info">
+                                <div class="res-name">Wikipédia – Mathématiques</div>
+                                <div class="res-desc">Fiches synthétiques sur les définitions, théorèmes et démonstrations mathématiques en français.</div>
+                                <div class="res-tags"><span class="res-tag">Tous les cours</span></div>
+                                <a class="btn-open" href="https://fr.wikipedia.org/wiki/Math%C3%A9matiques" target="_blank" rel="noopener">Ouvrir ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo web">🧮</div>
+                            <div class="res-info">
+                                <div class="res-name">Mathway</div>
+                                <div class="res-desc">Solveur de problèmes mathématiques avec explication détaillée de chaque étape de résolution.</div>
+                                <div class="res-tags"><span class="res-tag gold">Calcul</span><span class="res-tag gold">Algèbre</span></div>
+                                <a class="btn-open" href="https://www.mathway.com/fr" target="_blank" rel="noopener">Ouvrir ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo web">📊</div>
+                            <div class="res-info">
+                                <div class="res-name">Wolfram Alpha</div>
+                                <div class="res-desc">Moteur de calcul scientifique. Résout équations, intégrales, matrices et bien plus encore.</div>
+                                <div class="res-tags"><span class="res-tag">Analyse</span><span class="res-tag">Algèbre</span><span class="res-tag">Stats</span></div>
+                                <a class="btn-open" href="https://www.wolframalpha.com" target="_blank" rel="noopener">Ouvrir ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo web">🐍</div>
+                            <div class="res-info">
+                                <div class="res-name">Python.org (Documentation)</div>
+                                <div class="res-desc">Documentation officielle de Python en français. Indispensable pour le cours d'informatique.</div>
+                                <div class="res-tags"><span class="res-tag green">Python</span><span class="res-tag green">Info</span></div>
+                                <a class="btn-open" href="https://docs.python.org/fr/" target="_blank" rel="noopener">Ouvrir ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- YouTube -->
+                <div class="res-panel" id="panel-youtube">
+                    <div class="res-grid">
+                        <div class="res-card">
+                            <div class="res-logo yt">▶️</div>
+                            <div class="res-info">
+                                <div class="res-name">El Jj</div>
+                                <div class="res-desc">Mathématiques supérieures en français, expliquées clairement pour le niveau L1. Algèbre, analyse, suites.</div>
+                                <div class="res-tags"><span class="res-tag">Analyse</span><span class="res-tag">Algèbre</span></div>
+                                <a class="btn-open" href="https://www.youtube.com/@ElJj" target="_blank" rel="noopener">Regarder ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo yt">▶️</div>
+                            <div class="res-info">
+                                <div class="res-name">Numberphile</div>
+                                <div class="res-desc">Chaîne anglophone pour découvrir les mathématiques autrement. Vidéos passionnantes sur la culture math.</div>
+                                <div class="res-tags"><span class="res-tag gold">Culture Math</span></div>
+                                <a class="btn-open" href="https://www.youtube.com/@numberphile" target="_blank" rel="noopener">Regarder ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo yt">▶️</div>
+                            <div class="res-info">
+                                <div class="res-name">Science4All</div>
+                                <div class="res-desc">Maths et informatique théorique en français. Excellents cours d'algèbre linéaire et de probabilités.</div>
+                                <div class="res-tags"><span class="res-tag green">Algèbre</span><span class="res-tag green">Info</span></div>
+                                <a class="btn-open" href="https://www.youtube.com/@Science4Alll" target="_blank" rel="noopener">Regarder ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo yt">▶️</div>
+                            <div class="res-info">
+                                <div class="res-name">Grafikart – Python</div>
+                                <div class="res-desc">Tutoriels Python complets en français. Idéal pour maîtriser le cours d'informatique de L1.</div>
+                                <div class="res-tags"><span class="res-tag gold">Python</span><span class="res-tag gold">Info</span></div>
+                                <a class="btn-open" href="https://www.youtube.com/@grafikart" target="_blank" rel="noopener">Regarder ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo yt">▶️</div>
+                            <div class="res-info">
+                                <div class="res-name">3Blue1Brown</div>
+                                <div class="res-desc">Visualisations animées magnifiques sur l'algèbre linéaire, le calcul et les probabilités. Anglais sous-titré.</div>
+                                <div class="res-tags"><span class="res-tag">Algèbre</span><span class="res-tag">Analyse</span></div>
+                                <a class="btn-open" href="https://www.youtube.com/@3blue1brown" target="_blank" rel="noopener">Regarder ↗</a>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <div class="res-logo yt">▶️</div>
+                            <div class="res-info">
+                                <div class="res-name">Exo7Math</div>
+                                <div class="res-desc">Cours de maths universitaires filmés, exercices corrigés, niveau L1 à L3. Parfait pour réviser.</div>
+                                <div class="res-tags"><span class="res-tag green">Tous niveaux</span></div>
+                                <a class="btn-open" href="https://www.youtube.com/@Exo7Math" target="_blank" rel="noopener">Regarder ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="site-footer">
+                <span>© 2026 <span class="footer-brand">MathApp Space IUA</span> · L1 Maths Appliquées</span>
+                <div class="footer-links"><a href="accueil.html">Accueil</a><a href="cours.html">Cours</a><a href="ressources.html">Ressources</a><a href="filiere.html">La Filière</a></div>
+                <span class="footer-credits">Fait avec ❤️ par la Promo L2 · IUA Abidjan</span>
+            </footer>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/ressources.js"></script>
+</body>
+</html>
