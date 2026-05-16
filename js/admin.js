@@ -6,13 +6,40 @@
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
   const session = getSession();
-  if (!session || session.role !== 'admin') {
+
+  // Seuls les admins et superadmins ont accès
+  if (!session || (session.role !== 'admin' && session.role !== 'superadmin')) {
     alert('⛔ Accès réservé aux administrateurs.');
     window.location.replace('accueil.html');
     return;
   }
+
   loadStats();
   renderUsers();
+
+  // Afficher/masquer la section "Gérer les comptes" selon le rôle
+  const sectionUsers   = document.getElementById('section-users');
+  const actionGestion  = document.getElementById('action-gestion');
+  const actionExport   = document.getElementById('action-export');
+
+  if (session.role !== 'superadmin') {
+    // Les admins classiques ne peuvent pas gérer les comptes
+    if (sectionUsers)  sectionUsers.style.display  = 'none';
+    if (actionGestion) actionGestion.style.display = 'none';
+    if (actionExport)  actionExport.style.display  = 'none';
+  }
+
+  // Badge selon le rôle
+  const badge = document.getElementById('admin-role-badge');
+  if (badge) {
+    if (session.role === 'superadmin') {
+      badge.textContent = '👑 Super Administrateur';
+      badge.style.background = 'rgba(217,119,6,.15)';
+      badge.style.color      = '#D97706';
+    } else {
+      badge.textContent = '🛡 Administrateur';
+    }
+  }
 });
 
 /* ── Statistiques ── */

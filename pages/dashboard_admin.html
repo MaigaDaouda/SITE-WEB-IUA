@@ -53,7 +53,7 @@
         <div class="topbar-breadcrumb">Accueil <span>/ Administration</span></div>
       </div>
       <div class="topbar-right">
-        <span style="background:rgba(180,83,9,.1);color:#92400E;font-size:11px;font-weight:800;padding:6px 14px;border-radius:20px;">
+        <span id="admin-role-badge" style="background:rgba(180,83,9,.1);color:#92400E;font-size:11px;font-weight:800;padding:6px 14px;border-radius:20px;">
           🛡 Mode Administrateur
         </span>
       </div>
@@ -123,12 +123,13 @@
           <div class="at-desc">Informer tous les étudiants d'un message important.</div>
         </div>
         <div class="action-tile"
+          id="action-gestion"
           onclick="document.getElementById('section-users').scrollIntoView({behavior:'smooth'})">
           <div class="at-icon">👥</div>
           <div class="at-title">Gérer les comptes</div>
           <div class="at-desc">Voir les comptes enregistrés et supprimer si nécessaire.</div>
         </div>
-        <div class="action-tile" onclick="exportUsers()">
+        <div class="action-tile" id="action-export" onclick="exportUsers()">
           <div class="at-icon">📥</div>
           <div class="at-title">Exporter les inscrits</div>
           <div class="at-desc">Télécharger la liste des comptes au format JSON.</div>
@@ -142,8 +143,8 @@
           <input type="text" id="search-users" placeholder="🔍 Rechercher un utilisateur…"
             oninput="renderUsers()"
             style="background:var(--bg);border:1.5px solid var(--border);border-radius:9px;
-                padding:7px 13px;font-family:'Nunito',sans-serif;font-size:12px;
-                color:var(--text);outline:none;width:240px;" />
+                   padding:7px 13px;font-family:'Nunito',sans-serif;font-size:12px;
+                   color:var(--text);outline:none;width:240px;" />
         </div>
 
         <div class="table-wrap">
@@ -210,8 +211,8 @@
       <button class="btn-cancel" onclick="closeConfirm()">Annuler</button>
       <button id="confirm-ok-btn"
         style="background:var(--red);color:#fff;border:none;border-radius:9px;
-              padding:10px 22px;font-family:'Nunito',sans-serif;
-              font-size:13px;font-weight:800;cursor:pointer;">
+               padding:10px 22px;font-family:'Nunito',sans-serif;
+               font-size:13px;font-weight:800;cursor:pointer;">
         Supprimer définitivement
       </button>
     </div>

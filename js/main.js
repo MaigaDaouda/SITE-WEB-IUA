@@ -50,9 +50,13 @@ function initSidebar(session) {
   const nameEl = document.getElementById('sb-name');
   if (nameEl) nameEl.textContent = session.nom;
 
+  // Rôle
   const roleEl = document.getElementById('sb-role');
   if (roleEl) {
-    if (session.role === 'admin') {
+    if (session.role === 'superadmin') {
+      roleEl.textContent = '👑 Super Admin';
+      roleEl.className   = 'sb-user-role admin';
+    } else if (session.role === 'admin') {
       roleEl.textContent = '🛡 Administrateur';
       roleEl.className   = 'sb-user-role admin';
     } else {
@@ -61,9 +65,9 @@ function initSidebar(session) {
     }
   }
 
-  // Afficher lien admin si admin
+  // Afficher le lien Admin dans la sidebar si admin ou superadmin
   const adminLink = document.getElementById('sb-admin-link');
-  if (adminLink && session.role === 'admin') {
+  if (adminLink && (session.role === 'admin' || session.role === 'superadmin')) {
     adminLink.style.display = 'flex';
   }
 }

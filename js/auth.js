@@ -24,6 +24,9 @@ const MATRICULE_REGEX = /^\d{2}MA\d+[A-Za-z]$/;
 // Années considérées comme "Administrateur" (ex-L1 devenus L2)
 const ADMIN_YEARS = ['23', '24', '25'];
 
+// Matricule du Super Administrateur unique (gestion complète du site)
+const SUPERADMIN_MATRICULE = '25MA0015832S';
+
 
 /* ──────────────────────────────────────
    UTILITAIRES : STOCKAGE
@@ -92,23 +95,32 @@ function isValidMatricule(matricule) {
 }
 
 /**
- * Détermine le rôle à partir des 2 premiers chiffres du matricule.
+ * Détermine le rôle à partir du matricule.
+ * - superadmin : matricule exact 25MA0015832S (toi seul)
+ * - admin      : autres matricules commençant par 23, 24 ou 25
+ * - etudiant   : matricules commençant par 26 ou plus
  * @param {string} matricule
- * @returns {'admin'|'etudiant'|null}
+ * @returns {'superadmin'|'admin'|'etudiant'|null}
  */
 function getRoleFromMatricule(matricule) {
   if (!isValidMatricule(matricule)) return null;
-  const year = matricule.trim().substring(0, 2);
+  const mat     = matricule.trim().toUpperCase();
+  const year    = mat.substring(0, 2);
   const yearNum = parseInt(year, 10);
 
+  // Cas spécial : super administrateur unique
+  if (mat === SUPERADMIN_MATRICULE) {
+    return 'superadmin';
+  }
+  // Administrateurs classiques (L2)
   if (ADMIN_YEARS.includes(year)) {
     return 'admin';
   }
-  // Étudiant si l'année est 26 ou plus
+  // Étudiants (L1, 26 et au-delà)
   if (yearNum >= 26) {
     return 'etudiant';
   }
-  return null; // Matricule incohérent (ex : 10, 99…)
+  return null;
 }
 
 /**
@@ -496,10 +508,10 @@ function handleRegister(event) {
 
 /**
  * Redirige vers la bonne page selon le rôle.
- * @param {'admin'|'etudiant'} role
+ * @param {'superadmin'|'admin'|'etudiant'} role
  */
 function redirectAfterLogin(role) {
-  if (role === 'admin') {
+  if (role === 'superadmin' || role === 'admin') {
     window.location.href = 'pages/dashboard_admin.html';
   } else {
     window.location.href = 'pages/accueil.html';
