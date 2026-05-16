@@ -291,7 +291,12 @@ document.addEventListener('DOMContentLoaded', () => {
       badge.style.background = '';
       badge.style.color = '';
 
-      if (role === 'admin') {
+      if (role === 'superadmin') {
+        badge.textContent = '👑 Rôle détecté : Super Administrateur';
+        badge.className = 'role-detected admin';
+        badge.style.background = 'rgba(217,119,6,.12)';
+        badge.style.color = '#D97706';
+      } else if (role === 'admin') {
         badge.textContent = '🛡 Rôle détecté : Administrateur (L2)';
         badge.className = 'role-detected admin';
       } else if (role === 'etudiant') {
