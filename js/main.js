@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   main.js — MathApp Space IUA
-   Scripts partagés pour toutes les pages internes
+   main.js — Scripts partagés pour toutes les pages internes
    ═══════════════════════════════════════════════════════ */
 
 'use strict';
@@ -34,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. Chips de filtre
   initChips();
+
+  // 6. Menu hamburger mobile
+  initHamburger();
 });
 
 /* ── Sidebar ── */
@@ -50,7 +52,6 @@ function initSidebar(session) {
   const nameEl = document.getElementById('sb-name');
   if (nameEl) nameEl.textContent = session.nom;
 
-  // Rôle
   const roleEl = document.getElementById('sb-role');
   if (roleEl) {
     if (session.role === 'superadmin') {
@@ -65,7 +66,7 @@ function initSidebar(session) {
     }
   }
 
-  // Afficher le lien Admin dans la sidebar si admin ou superadmin
+  // Afficher lien admin si admin ou superadmin
   const adminLink = document.getElementById('sb-admin-link');
   if (adminLink && (session.role === 'admin' || session.role === 'superadmin')) {
     adminLink.style.display = 'flex';
@@ -82,4 +83,38 @@ function initChips() {
       });
     });
   });
+}
+
+/* ── Hamburger menu mobile ── */
+function initHamburger() {
+  const btn     = document.getElementById('hamburger-btn');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  if (!btn || !sidebar) return;
+
+  // Ouvrir la sidebar
+  btn.addEventListener('click', () => {
+    sidebar.classList.add('open');
+    if (overlay) overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  });
+
+  // Fermer via overlay
+  if (overlay) {
+    overlay.addEventListener('click', closeSidebar);
+  }
+
+  // Fermer quand on clique un lien de la sidebar (mobile)
+  sidebar.querySelectorAll('.sb-item').forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 900) closeSidebar();
+    });
+  });
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    if (overlay) overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
 }

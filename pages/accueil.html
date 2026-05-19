@@ -10,6 +10,8 @@
 <body>
 
 <div class="app-shell">
+  <!-- Overlay sidebar mobile -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
   <!-- ══════════════════════════════════════
        SIDEBAR
@@ -81,6 +83,12 @@
     <!-- Topbar -->
     <header class="topbar">
       <div class="topbar-left">
+        <!-- Bouton hamburger (visible sur mobile uniquement) -->
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Ouvrir le menu">
+          <span class="hb-bar"></span>
+          <span class="hb-bar"></span>
+          <span class="hb-bar"></span>
+        </button>
         <div class="topbar-title">Tableau de bord</div>
         <div class="topbar-breadcrumb">Accueil <span>/ Tableau de bord</span></div>
       </div>
@@ -199,48 +207,9 @@
           <div class="section-card-head">
             <h3>📢 Annonces</h3>
           </div>
-          <div class="section-card-body">
-
-            <div class="annonce-item">
-              <div class="ann-dot blue"></div>
-              <div>
-                <div class="ann-title">Dépôt du sujet final de Maths</div>
-                <div class="ann-date">05 mai 2026</div>
-              </div>
-            </div>
-
-            <div class="annonce-item">
-              <div class="ann-dot gold"></div>
-              <div>
-                <div class="ann-title">Nouveau sujet d'examen ajouté</div>
-                <div class="ann-date">02 mai 2026</div>
-              </div>
-            </div>
-
-            <div class="annonce-item">
-              <div class="ann-dot green"></div>
-              <div>
-                <div class="ann-title">Bienvenue aux nouveaux L1 !</div>
-                <div class="ann-date">20 avr. 2026</div>
-              </div>
-            </div>
-
-            <div class="annonce-item">
-              <div class="ann-dot blue"></div>
-              <div>
-                <div class="ann-title">3 chaînes YouTube ajoutées</div>
-                <div class="ann-date">15 avr. 2026</div>
-              </div>
-            </div>
-
-            <div class="annonce-item">
-              <div class="ann-dot gold"></div>
-              <div>
-                <div class="ann-title">Site officiellement en ligne</div>
-                <div class="ann-date">10 avr. 2026</div>
-              </div>
-            </div>
-
+          <!-- Chargé dynamiquement depuis Firestore -->
+          <div class="section-card-body" id="annonces-liste">
+            <div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">⏳ Chargement…</div>
           </div>
         </div>
 
