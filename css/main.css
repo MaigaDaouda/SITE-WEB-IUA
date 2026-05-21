@@ -117,6 +117,26 @@ ul { list-style: none; }
 .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 26px; }
 .stat-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow-sm); transition: var(--trans); }
 .stat-card:hover { border-color: var(--mid); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+/* Carte stat cliquable (raccourci) */
+.stat-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+.stat-card-link::after {
+  content: '→';
+  position: absolute;
+  bottom: 14px; right: 16px;
+  font-size: 14px;
+  color: var(--mid);
+  opacity: 0;
+  transition: var(--trans);
+}
+.stat-card-link:hover::after { opacity: 1; }
+.stat-card-link:hover { border-color: var(--mid); box-shadow: var(--shadow-md); transform: translateY(-3px); }
 .stat-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
 .stat-icon.blue  { background: var(--pale); }
 .stat-icon.gold  { background: rgba(180,83,9,.08); }
